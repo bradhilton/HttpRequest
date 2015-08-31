@@ -16,6 +16,6 @@ Pod::Spec.new do |s|
   s.source_files  = "HttpRequest", "HttpRequest/**/*.{swift,h,m}"
   s.requires_arc = true
 
-  s.dependency 'Convertible'
+  s.dependency 'Convertible', '~>0.9.0'
 
 end

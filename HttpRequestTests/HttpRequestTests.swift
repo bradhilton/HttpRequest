@@ -7,29 +7,52 @@
 //
 
 import XCTest
+import HttpRequest
 
 class HttpRequestTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+        let expectation = expectationWithDescription("Request")
+        Contacts.getContacts.success {
+            for contact in $0.body {
+                print("\(contact.id) \(contact.firstName) \(contact.lastName) \(contact.birthday)")
+            }
+            print($0.urlRequest.URL!.absoluteString + " \($0.responseTime)")
+            expectation.fulfill()
+        }.failure { XCTFail("\($0)") }
+        waitForExpectationsWithTimeout(10.0, handler: nil)
     }
     
 }
+
+typealias Number = NSNumber
+
+struct Contact : StructConvertible, UnderscoreToCamelCase, OptionalKeys {
+    var id = 0
+    var firstName = ""
+    var lastName = ""
+    var birthday = ""
+    let optionalKeys: [String] = []
+}
+
+class API : HttpService {
+    
+    required init() {
+        super.init()
+        path = "https://api.sendoutcards.com/v1"
+        headers = ["Authorization": "Token a77a499e306b3ea41f574a185522556a8146d76f", "Content-Type": "text/json"]
+    }
+    
+}
+
+class Contacts : API {
+    
+    class var getContacts: GET<[Contact]> { return GET<[Contact]>(self).params(["simple":"true"]) }
+    
+    required init() {
+        super.init()
+        path += "/contacts"
+    }
+    
+}
+

@@ -10,6 +10,12 @@
 		A2FA68821B486AC000E73D9F /* HttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A2FA68811B486AC000E73D9F /* HttpRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2FA68891B486AC000E73D9F /* HttpRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FA687E1B486AC000E73D9F /* HttpRequest.framework */; };
 		A2FA688E1B486AC000E73D9F /* HttpRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA688D1B486AC000E73D9F /* HttpRequestTests.swift */; };
+		A2FA689D1B486AE400E73D9F /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA68981B486AE400E73D9F /* HttpError.swift */; };
+		A2FA689E1B486AE400E73D9F /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA68991B486AE400E73D9F /* HttpRequest.swift */; };
+		A2FA689F1B486AE400E73D9F /* HttpRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA689A1B486AE400E73D9F /* HttpRequestBuilder.swift */; };
+		A2FA68A01B486AE400E73D9F /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA689B1B486AE400E73D9F /* HttpResponse.swift */; };
+		A2FA68A11B486AE400E73D9F /* HttpService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA689C1B486AE400E73D9F /* HttpService.swift */; };
+		B432F662C9F746A45CAA0934 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857E4A3AE590A50BEF384901 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +29,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		068E2BA45A4398D41AFBF48C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		857E4A3AE590A50BEF384901 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FA687E1B486AC000E73D9F /* HttpRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HttpRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FA68811B486AC000E73D9F /* HttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		A2FA68831B486AC000E73D9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A2FA68881B486AC000E73D9F /* HttpRequestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HttpRequestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FA688D1B486AC000E73D9F /* HttpRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpRequestTests.swift; sourceTree = "<group>"; };
 		A2FA688F1B486AC000E73D9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2FA68981B486AE400E73D9F /* HttpError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
+		A2FA68991B486AE400E73D9F /* HttpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequest.swift; sourceTree = "<group>"; };
+		A2FA689A1B486AE400E73D9F /* HttpRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequestBuilder.swift; sourceTree = "<group>"; };
+		A2FA689B1B486AE400E73D9F /* HttpResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
+		A2FA689C1B486AE400E73D9F /* HttpService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpService.swift; sourceTree = "<group>"; };
+		A2FA68A21B486C7300E73D9F /* HttpRequest.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = HttpRequest.podspec; sourceTree = "<group>"; };
+		E1B7D6B4B0A089B443B9FB08 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B432F662C9F746A45CAA0934 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,12 +66,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20B5FB07A6FF95F19B915A36 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				857E4A3AE590A50BEF384901 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51747F368501F63473DFFF07 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1B7D6B4B0A089B443B9FB08 /* Pods.debug.xcconfig */,
+				068E2BA45A4398D41AFBF48C /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		A2FA68741B486AC000E73D9F = {
 			isa = PBXGroup;
 			children = (
+				A2FA68A21B486C7300E73D9F /* HttpRequest.podspec */,
 				A2FA68801B486AC000E73D9F /* HttpRequest */,
 				A2FA688C1B486AC000E73D9F /* HttpRequestTests */,
 				A2FA687F1B486AC000E73D9F /* Products */,
+				51747F368501F63473DFFF07 /* Pods */,
+				20B5FB07A6FF95F19B915A36 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +107,11 @@
 		A2FA68801B486AC000E73D9F /* HttpRequest */ = {
 			isa = PBXGroup;
 			children = (
+				A2FA68981B486AE400E73D9F /* HttpError.swift */,
+				A2FA68991B486AE400E73D9F /* HttpRequest.swift */,
+				A2FA689A1B486AE400E73D9F /* HttpRequestBuilder.swift */,
+				A2FA689B1B486AE400E73D9F /* HttpResponse.swift */,
+				A2FA689C1B486AE400E73D9F /* HttpService.swift */,
 				A2FA68811B486AC000E73D9F /* HttpRequest.h */,
 				A2FA68831B486AC000E73D9F /* Info.plist */,
 			);
@@ -104,10 +145,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2FA68921B486AC000E73D9F /* Build configuration list for PBXNativeTarget "HttpRequest" */;
 			buildPhases = (
+				0207E91E79630C3D3E6994C0 /* Check Pods Manifest.lock */,
 				A2FA68791B486AC000E73D9F /* Sources */,
 				A2FA687A1B486AC000E73D9F /* Frameworks */,
 				A2FA687B1B486AC000E73D9F /* Headers */,
 				A2FA687C1B486AC000E73D9F /* Resources */,
+				EAC680EEF174F79AE8B1ECCA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -142,6 +185,7 @@
 		A2FA68751B486AC000E73D9F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Skyvive;
 				TargetAttributes = {
@@ -188,11 +232,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0207E91E79630C3D3E6994C0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EAC680EEF174F79AE8B1ECCA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A2FA68791B486AC000E73D9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2FA68A01B486AE400E73D9F /* HttpResponse.swift in Sources */,
+				A2FA689D1B486AE400E73D9F /* HttpError.swift in Sources */,
+				A2FA689F1B486AE400E73D9F /* HttpRequestBuilder.swift in Sources */,
+				A2FA689E1B486AE400E73D9F /* HttpRequest.swift in Sources */,
+				A2FA68A11B486AE400E73D9F /* HttpService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,29 +388,36 @@
 		};
 		A2FA68931B486AC000E73D9F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1B7D6B4B0A089B443B9FB08 /* Pods.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = HttpRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skyvive.HttpRequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		A2FA68941B486AC000E73D9F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 068E2BA45A4398D41AFBF48C /* Pods.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = HttpRequest/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skyvive.HttpRequest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -375,6 +464,7 @@
 				A2FA68941B486AC000E73D9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2FA68951B486AC000E73D9F /* Build configuration list for PBXNativeTarget "HttpRequestTests" */ = {
 			isa = XCConfigurationList;
@@ -383,6 +473,7 @@
 				A2FA68971B486AC000E73D9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

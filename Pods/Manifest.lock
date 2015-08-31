@@ -1,0 +1,19 @@
+PODS:
+  - Convertible (0.9.0)
+  - Dynamic (0.0.1)
+
+DEPENDENCIES:
+  - Convertible (from `~/Developer/iOS/Skyvive/Convertible`)
+  - Dynamic (from `~/Developer/iOS/Skyvive/Dynamic`)
+
+EXTERNAL SOURCES:
+  Convertible:
+    :path: ~/Developer/iOS/Skyvive/Convertible
+  Dynamic:
+    :path: ~/Developer/iOS/Skyvive/Dynamic
+
+SPEC CHECKSUMS:
+  Convertible: 40037ac66ecc826f511beb28dc926705bc9c4222
+  Dynamic: b6f97c72f0772f6836c7a219752959b8a03ca02e
+
+COCOAPODS: 0.38.0

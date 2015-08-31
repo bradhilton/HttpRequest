@@ -1,19 +1,28 @@
 PODS:
-  - Convertible (0.9.0)
-  - Dynamic (0.0.1)
+  - Convertible (0.9.0):
+    - SwiftKVC (~> 1.0.0)
+  - SwiftKVC (1.0.0)
 
 DEPENDENCIES:
-  - Convertible (from `~/Developer/iOS/Skyvive/Convertible`)
-  - Dynamic (from `~/Developer/iOS/Skyvive/Dynamic`)
+  - Convertible (from `https://github.com/bradhilton/Convertible.git`)
+  - SwiftKVC (from `https://github.com/bradhilton/SwiftKVC.git`)
 
 EXTERNAL SOURCES:
   Convertible:
-    :path: ~/Developer/iOS/Skyvive/Convertible
-  Dynamic:
-    :path: ~/Developer/iOS/Skyvive/Dynamic
+    :git: https://github.com/bradhilton/Convertible.git
+  SwiftKVC:
+    :git: https://github.com/bradhilton/SwiftKVC.git
+
+CHECKOUT OPTIONS:
+  Convertible:
+    :commit: 18fdc591b8427002f413bed690c9d522ae6aed13
+    :git: https://github.com/bradhilton/Convertible.git
+  SwiftKVC:
+    :commit: 7284344fc98953e2ff3efe48871860ef96db5bce
+    :git: https://github.com/bradhilton/SwiftKVC.git
 
 SPEC CHECKSUMS:
-  Convertible: 40037ac66ecc826f511beb28dc926705bc9c4222
-  Dynamic: b6f97c72f0772f6836c7a219752959b8a03ca02e
+  Convertible: 08f21bb11d864045d08c44bc0053b08e9ab75ecb
+  SwiftKVC: ceeae9bd382506ac2e95d22bc04dcdcf759c9f9a
 
 COCOAPODS: 0.38.0

@@ -29,5 +29,10 @@
   "osx": {
     "exclude_files": "Convertible/**/UIImage+Convertible.swift"
   },
-  "requires_arc": true
+  "requires_arc": true,
+  "dependencies": {
+    "SwiftKVC": [
+      "~> 1.0.0"
+    ]
+  }
 }

@@ -1,4 +1,4 @@
 use_frameworks!
 
-pod 'Convertible', :path => '~/Developer/iOS/Skyvive/Convertible'
-pod 'Dynamic', :path => '~/Developer/iOS/Skyvive/Dynamic'
+pod 'SwiftKVC', :git => 'https://github.com/bradhilton/SwiftKVC.git'
+pod 'Convertible', :git => 'https://github.com/bradhilton/Convertible.git'

@@ -53,9 +53,9 @@ code_sign_if_enabled() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Pods/Convertible.framework'
-  install_framework 'Pods/Dynamic.framework'
+  install_framework 'Pods/SwiftKVC.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Pods/Convertible.framework'
-  install_framework 'Pods/Dynamic.framework'
+  install_framework 'Pods/SwiftKVC.framework'
 fi

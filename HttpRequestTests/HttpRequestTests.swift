@@ -13,13 +13,23 @@ class HttpRequestTests: XCTestCase {
     
     func testExample() {
         let expectation = expectationWithDescription("Request")
-        Contacts.getContacts.success {
-            for contact in $0.body {
-                print("\(contact.id) \(contact.firstName) \(contact.lastName) \(contact.birthday)")
-            }
-            print($0.urlRequest.URL!.absoluteString + " \($0.responseTime)")
+        Contacts.getContacts
+        .progress { (sentProgress, receivedProgress) in
+            print("Updating progress")
+        }
+        .cache { response in
+            print("Received cached response")
+        }
+        .success { response in
+            print("Recieved network response")
+//            for contact in $0.body {
+//                print("\(contact.id) \(contact.firstName) \(contact.lastName) \(contact.birthday)")
+//            }
             expectation.fulfill()
-        }.failure { XCTFail("\($0)") }
+        }
+        .failure { error in
+            XCTFail(String(error))
+        }
         waitForExpectationsWithTimeout(10.0, handler: nil)
     }
     
@@ -47,7 +57,7 @@ class API : HttpService {
 
 class Contacts : API {
     
-    class var getContacts: GET<[Contact]> { return GET<[Contact]>(self).params(["simple":"true"]) }
+    class var getContacts: GET<[Contact]> { return GET(self).params(["simple":"true"]) }
     
     required init() {
         super.init()

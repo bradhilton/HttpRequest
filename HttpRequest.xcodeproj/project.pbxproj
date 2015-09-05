@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2AE63C51B963F930098F3FC /* HttpTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE63C41B963F930098F3FC /* HttpTask.swift */; settings = {ASSET_TAGS = (); }; };
+		A2AE63C71B9654650098F3FC /* HttpLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2AE63C61B9654650098F3FC /* HttpLogging.swift */; settings = {ASSET_TAGS = (); }; };
 		A2FA68821B486AC000E73D9F /* HttpRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A2FA68811B486AC000E73D9F /* HttpRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A2FA68891B486AC000E73D9F /* HttpRequest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2FA687E1B486AC000E73D9F /* HttpRequest.framework */; };
 		A2FA688E1B486AC000E73D9F /* HttpRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2FA688D1B486AC000E73D9F /* HttpRequestTests.swift */; };
@@ -31,6 +33,8 @@
 /* Begin PBXFileReference section */
 		068E2BA45A4398D41AFBF48C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		857E4A3AE590A50BEF384901 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2AE63C41B963F930098F3FC /* HttpTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpTask.swift; sourceTree = "<group>"; };
+		A2AE63C61B9654650098F3FC /* HttpLogging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpLogging.swift; sourceTree = "<group>"; };
 		A2FA687E1B486AC000E73D9F /* HttpRequest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HttpRequest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2FA68811B486AC000E73D9F /* HttpRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpRequest.h; sourceTree = "<group>"; };
 		A2FA68831B486AC000E73D9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,9 +113,11 @@
 			children = (
 				A2FA68981B486AE400E73D9F /* HttpError.swift */,
 				A2FA68991B486AE400E73D9F /* HttpRequest.swift */,
+				A2AE63C41B963F930098F3FC /* HttpTask.swift */,
 				A2FA689A1B486AE400E73D9F /* HttpRequestBuilder.swift */,
 				A2FA689B1B486AE400E73D9F /* HttpResponse.swift */,
 				A2FA689C1B486AE400E73D9F /* HttpService.swift */,
+				A2AE63C61B9654650098F3FC /* HttpLogging.swift */,
 				A2FA68811B486AC000E73D9F /* HttpRequest.h */,
 				A2FA68831B486AC000E73D9F /* Info.plist */,
 			);
@@ -273,7 +279,9 @@
 				A2FA68A01B486AE400E73D9F /* HttpResponse.swift in Sources */,
 				A2FA689D1B486AE400E73D9F /* HttpError.swift in Sources */,
 				A2FA689F1B486AE400E73D9F /* HttpRequestBuilder.swift in Sources */,
+				A2AE63C71B9654650098F3FC /* HttpLogging.swift in Sources */,
 				A2FA689E1B486AE400E73D9F /* HttpRequest.swift in Sources */,
+				A2AE63C51B963F930098F3FC /* HttpTask.swift in Sources */,
 				A2FA68A11B486AE400E73D9F /* HttpService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

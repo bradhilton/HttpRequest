@@ -10,7 +10,7 @@ import Foundation
 import Convertible
 
 /// An HttpResponse object is always returned by a successful request
-public struct HttpResponse<T where T : DataInitializable> {
+public struct HttpResponse<T : DataInitializable> {
     
     /// Can be of any type that implements DataInitializable
     public let body: T

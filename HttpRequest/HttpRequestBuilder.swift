@@ -9,10 +9,10 @@
 import Foundation
 import Convertible
 
-/// Base request class. Do not save request or delay configuring since it starts automatically.
-public class GET<T where T : DataInitializable> {
+/// Default request builder; instantiate subclasses GET, POST, etc. Request is automatically rendered; do not save reference.
+public class HttpRequestBuilder<T : DataInitializable> {
     
-    var token = dispatch_once_t()
+    var autoRequestEnabled = true
     
     var request: HttpRequest<T>
     
@@ -81,6 +81,12 @@ public class GET<T where T : DataInitializable> {
         return self
     }
     
+    /// Set operation queue
+    public func queue(queue: NSOperationQueue) -> Self {
+        request.queue = queue
+        return self
+    }
+    
     /// Handler for completion; will return HttpResponse if successful, otherwise an error
     public func completion(completion: (HttpResponse<T>?, ErrorType?) -> ()) -> Self {
         request.completion = completion
@@ -99,25 +105,60 @@ public class GET<T where T : DataInitializable> {
         return self
     }
     
+    /// Handler that returns a cached response
+    public func cache(cache: (HttpResponse<T>) -> ()) -> Self {
+        request.cache = cache
+        return self
+    }
+    
+    /// Handler that returns progress for the request and response respectively represented by two doubles between 0.0 to 1.0
+    public func progress(progress: (Double, Double) -> ()) -> Self {
+        request.progress = progress
+        return self
+    }
+    
     func makeRequest() {
         let when = dispatch_time(DISPATCH_TIME_NOW, Int64(10 * NSEC_PER_MSEC))
         let queue = (NSOperationQueue.currentQueue()?.underlyingQueue ?? NSOperationQueue.mainQueue().underlyingQueue) ?? dispatch_get_main_queue()!
-        dispatch_once(&token) {
-            dispatch_after(when, queue) { self.request.start() }
+        dispatch_after(when, queue) {
+            if self.autoRequestEnabled {
+                self.start()
+            }
+        }
+    }
+    
+    /// Call to postpone making call; must call start() to make request.
+    public func wait() -> Self {
+        autoRequestEnabled = false
+        return self
+    }
+    
+    /// Call to make request manually. Unless you previously called wait(), there is no need to call start().
+    public func start() {
+        autoRequestEnabled = false
+        if request.cache != nil {
+            HttpCacheTask(request: request)
+            if request.success != nil || request.completion != nil {
+                HttpNetworkTask(request: request)
+            }
+        } else {
+            HttpStandardTask(request: request)
         }
     }
     
 }
 
-/// Creates a request with "POST" as method; see GET for more info
-public class POST<T where T : DataInitializable> : GET<T> { override static var method: String { return "POST" } }
-/// Creates a request with "PUT" as method; see GET for more info
-public class PUT<T where T : DataInitializable> : GET<T> { override static var method: String { return "PUT" } }
-/// Creates a request with "DELETE" as method; see GET for more info
-public class DELETE<T where T : DataInitializable> : GET<T> { override static var method: String { return "DELETE" } }
-/// Creates a request with "PATCH" as method; see GET for more info
-public class PATCH<T where T : DataInitializable> : GET<T> { override static var method: String { return "PATCH" } }
-/// Creates a request with "HEAD" as method; see GET for more info
-public class HEAD<T where T : DataInitializable> : GET<T> { override static var method: String { return "HEAD" } }
-/// Creates a request with "OPTIONS" as method; see GET for more info
-public class OPTIONS<T where T : DataInitializable> : GET<T> { override static var method: String { return "OPTIONS" } }
+/// Creates a request with "GET" as method; see HttpRequestBuilder for more info
+public class GET<T : DataInitializable> : HttpRequestBuilder<T> {}
+/// Creates a request with "POST" as method; see HttpRequestBuilder for more info
+public class POST<T : DataInitializable> : HttpRequestBuilder<T> { override static var method: String { return "POST" } }
+/// Creates a request with "PUT" as method; see HttpRequestBuilder for more info
+public class PUT<T : DataInitializable> : HttpRequestBuilder<T> { override static var method: String { return "PUT" } }
+/// Creates a request with "DELETE" as method; see HttpRequestBuilder for more info
+public class DELETE<T : DataInitializable> : HttpRequestBuilder<T> { override static var method: String { return "DELETE" } }
+/// Creates a request with "PATCH" as method; see HttpRequestBuilder for more info
+public class PATCH<T : DataInitializable> : HttpRequestBuilder<T> { override static var method: String { return "PATCH" } }
+/// Creates a request with "HEAD" as method; see HttpRequestBuilder for more info
+public class HEAD<T : DataInitializable> : HttpRequestBuilder<T> { override static var method: String { return "HEAD" } }
+/// Creates a request with "OPTIONS" as method; see HttpRequestBuilder for more info
+public class OPTIONS<T : DataInitializable> : HttpRequestBuilder<T> { override static var method: String { return "OPTIONS" } }

@@ -16,6 +16,7 @@ public class HttpService {
     public var params = [String: String]()
     public var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
     public var convertibleOptions = [ConvertibleOption]()
+    public var queue: NSOperationQueue = NSOperationQueue.mainQueue()
     public var failure: ((ErrorType) -> ())?
     public var logging = false
     required public init() {}
@@ -27,6 +28,7 @@ public class HttpService {
         request.loggingEnabled = logging
         request.configuration = configuration
         request.convertibleOptions = convertibleOptions
+        request.queue = queue
         request.failure = failure
     }
     

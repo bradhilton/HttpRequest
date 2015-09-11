@@ -14,18 +14,27 @@ class HttpRequestTests: XCTestCase {
     func testExample() {
         let expectation = expectationWithDescription("Request")
         Contacts.getContacts
+        .success { response in
+            expectation.fulfill()
+        }
+        .failure { error in
+            XCTFail(String(error))
+        }
+        waitForExpectationsWithTimeout(10.0, handler: nil)
+    }
+    
+    func testExample2() {
+        let expectation = expectationWithDescription("Request")
+        Contacts.getContacts
         .progress { (sentProgress, receivedProgress) in
             print("Updating progress")
         }
-        .cache { response in
-            print("Received cached response")
-        }
         .success { response in
             print("Recieved network response")
-//            for contact in $0.body {
-//                print("\(contact.id) \(contact.firstName) \(contact.lastName) \(contact.birthday)")
-//            }
             expectation.fulfill()
+        }
+        .cache { response in
+            print("Received cached response")
         }
         .failure { error in
             XCTFail(String(error))
@@ -43,6 +52,14 @@ struct Contact : StructConvertible, UnderscoreToCamelCase, OptionalKeys {
     var lastName = ""
     var birthday = ""
     let optionalKeys: [String] = []
+}
+
+extension Contact : CustomStringConvertible {
+    
+    var description: String {
+        return "\(id) \(firstName) \(lastName) \(birthday)"
+    }
+    
 }
 
 class API : HttpService {

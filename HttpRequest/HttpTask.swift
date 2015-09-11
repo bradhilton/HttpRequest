@@ -133,7 +133,9 @@ class HttpCacheTask<T : DataInitializable> : HttpStandardTask<T> {
     }
     
     override func returnResponse(response: HttpResponse<T>) {
-        request.cache?(response)
+        request.queue.addOperationWithBlock {
+            request.cache?(response)
+        }
     }
     
 }

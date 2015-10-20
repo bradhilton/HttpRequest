@@ -69,6 +69,12 @@ public class HttpRequestBuilder<T : DataInitializable> {
         return self
     }
     
+    /// Set session configuration
+    public func configuration(configuration: NSURLSessionConfiguration) -> Self {
+        request.configuration = configuration
+        return self
+    }
+    
     /// Handler to update session configuration
     public func configure(configure: (inout NSURLSessionConfiguration) -> ()) -> Self {
         configure(&request.configuration)

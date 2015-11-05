@@ -61,7 +61,7 @@ class HttpStandardTask<T : DataInitializable> : NSObject, NSURLSessionDataDelega
             let sentProgress = progress(dataTask.countOfBytesSent, dataTask.countOfBytesExpectedToSend, completedSendingData)
             let recievedProgress = progress(dataTask.countOfBytesReceived, dataTask.countOfBytesExpectedToReceive, completedRecievingData)
             request.queue.addOperationWithBlock {
-                request.progress?(sentProgress, recievedProgress)
+                self.request.progress?(sentProgress, recievedProgress)
             }
         }
     }
@@ -134,7 +134,7 @@ class HttpCacheTask<T : DataInitializable> : HttpStandardTask<T> {
     
     override func returnResponse(response: HttpResponse<T>) {
         request.queue.addOperationWithBlock {
-            request.cache?(response)
+            self.request.cache?(response)
         }
     }
     
